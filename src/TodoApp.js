@@ -1,7 +1,10 @@
 
 import React, { useEffect, useReducer } from 'react'
+import { TodoList } from './components/TodoList'
 import { useForm } from './hooks/useForm'
 import { todoReducer } from './reducer/todoReducer'
+
+
 
 const initialState = [
   {
@@ -87,23 +90,8 @@ const handleToggle=(todoId)=>{
       <hr />
 
       <div className="row">
-        <div className="col-7">
-          <ul className="list-group list-group-flush">
-            {
-              todos.map((todo, i) => (
-                <li
-                  key={todo.id}
-                  className="list-group-item"
-                >
-                  <p className={`${ todo.done  && 'complete'}`} onClick={()=>handleToggle(todo.id)}>{i + 1} {todo.desc}</p>
-                  <button onClick={()=>handleDelete(todo.id)} className="btn btn-danger">
-                    borrar
-                  </button>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+        <TodoList todos={todos} handleToggle={handleToggle} handleDelete={handleDelete} />
+        
 
         <div className="col-5" >
           <h4>Agregar ToDo</h4>

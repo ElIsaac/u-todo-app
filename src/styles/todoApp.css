@@ -1,0 +1,7 @@
+body{
+    padding: 50cm;
+}
+
+.list-group-item{
+    display: flex;
+}
